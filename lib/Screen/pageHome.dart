@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../components/post_component.dart';
-import 'nextScreen.dart';
+import 'profile_screen.dart';
 
 class HomePage extends StatelessWidget {
   final myController = TextEditingController();
@@ -37,17 +37,35 @@ class HomePage extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Column(
-                      children: [
-                        CircleAvatar(
-                          radius: 32,
-                          backgroundImage: NetworkImage(
-                              'https://picsum.photos/id/$index/200/200'),
-                        ),
-                        const SizedBox(height: 8.0),
-                        Text('User $index'),
-                      ],
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 8.0, vertical: 12),
+
+                    /// we should make a UserModel and [Reusable] UserAvatar [component]
+                    /// that takes a UserModel ... for [Viewing] it every ware.
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => ProfilePage(
+                                  avatarImageUrl:
+                                      'https://picsum.photos/id/$index/200/200',
+                                  bio: ' Bio Goes Here... ' * 5,
+                                  coverImageUrl:
+                                      'https://picsum.photos/id/$index/200/200',
+                                  displayName: 'User $index',
+                                  username: '@username_$index',
+                                )));
+                      },
+                      child: Column(
+                        children: [
+                          CircleAvatar(
+                            radius: 32,
+                            backgroundImage: NetworkImage(
+                                'https://picsum.photos/id/$index/200/200'),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Text('User $index'),
+                        ],
+                      ),
                     ),
                   );
                 },
@@ -58,7 +76,8 @@ class HomePage extends StatelessWidget {
             Column(
               children: List.generate(
                 10,
-                (index) => PostComponent(replyTextCtrl: myController,postId: index),
+                (index) =>
+                    PostComponent(replyTextCtrl: myController, postId: index),
               ),
             ),
           ],

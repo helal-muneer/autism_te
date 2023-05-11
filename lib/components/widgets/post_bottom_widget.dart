@@ -68,7 +68,7 @@ class _PostBottomWidgetState extends State<PostBottomWidget> {
                             isVisableTextField = !isVisableTextField;
                           });
                         },
-                        icon: const Icon(FontAwesomeIcons.solidHandshake)),
+                        icon: const Icon(FontAwesomeIcons.repeat)),
                     IconButton(
                         onPressed: () {
                           setState(() {
