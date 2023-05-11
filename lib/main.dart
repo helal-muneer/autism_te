@@ -3,12 +3,12 @@ import '../Screen/cheeking.dart';
 import '../Screen/child_info.dart';
 import '../Screen/phone.dart';
 import '../Screen/question_model.dart';
-import '../Screen/splash_screen.dart';
 import '../Screen/suggestions_view.dart';
 import '../Screen/verify.dart';
 import 'package:flutter/material.dart';
 
 import 'Screen/MyHomePage.dart';
+import 'Screen/pageHome.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,7 +26,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const SplashScreen(),
+        '/': (_) => HomePage(),
+        // '/': (context) => const SplashScreen(),
         '/phone': (context) => const MyPhone(),
         '/verify': (context) => const MyVerify(),
         '/account_type': (context) => const MyAccount(),
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
         '/question_model': (context) => const QuizScreen(),
         '/suggestions_view': (context) => const SuggestionsView(),
         '/MyHomePage': (context) => const MyHomePage(),
+        // 'InstagramHomeScreen': (_) => HomePage(),
+        // 'HomeScreen':(_)=>,
       },
     );
   }

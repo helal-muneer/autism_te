@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../components/post_component.dart';
 import 'nextScreen.dart';
 
 class HomePage extends StatelessWidget {
   final myController = TextEditingController();
 
+  HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Instagram'),
+        title: const Text('Instagram'),
         actions: [
           IconButton(
-            icon: Icon(Icons.add),
+            icon: const Icon(Icons.add),
             onPressed: () {},
           ),
           IconButton(
-            icon: FaIcon(FontAwesomeIcons.facebookMessenger),
+            icon: const FaIcon(FontAwesomeIcons.facebookMessenger),
             onPressed: () {},
           ),
         ],
@@ -27,14 +30,14 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             // Stories section
-            Container(
+            SizedBox(
               height: 120.0,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: 10,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Column(
                       children: [
                         CircleAvatar(
@@ -42,7 +45,7 @@ class HomePage extends StatelessWidget {
                           backgroundImage: NetworkImage(
                               'https://picsum.photos/id/$index/200/200'),
                         ),
-                        SizedBox(height: 8.0),
+                        const SizedBox(height: 8.0),
                         Text('User $index'),
                       ],
                     ),
@@ -50,45 +53,14 @@ class HomePage extends StatelessWidget {
                 },
               ),
             ),
-            Divider(),
+            const Divider(),
             // Posts section
             Column(
               children: List.generate(
                 10,
-                    (index) => ListTile(
-                  leading: CircleAvatar(
-                    radius: 24,
-                    backgroundImage:
-                    NetworkImage('https://picsum.photos/id/$index/100/100'),
-                  ),
-                  title: Text('User $index'),
-                  subtitle: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('A caption for post $index'),
-                      SizedBox(height: 8.0),
-                      TextField(
-                        controller: myController,
-                        decoration: InputDecoration(
-                          hintText: 'إرسل ردك',
-                        ),
-                      ),
-                      ElevatedButton(
-                        child: Text('Send'),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => NextScreen(text: myController.text)),
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                  contentPadding: EdgeInsets.all(16.0),
-                ),
+                (index) => PostComponent(replyTextCtrl: myController,postId: index),
               ),
             ),
-
           ],
         ),
       ),
@@ -96,7 +68,7 @@ class HomePage extends StatelessWidget {
         currentIndex: 0,
         selectedItemColor: Colors.black,
         unselectedItemColor: Colors.grey,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -117,7 +89,7 @@ class HomePage extends StatelessWidget {
             icon: CircleAvatar(
               radius: 12,
               backgroundImage:
-              NetworkImage('https://picsum.photos/id/0/100/100'),
+                  NetworkImage('https://picsum.photos/id/0/100/100'),
             ),
             label: 'Profile',
           ),

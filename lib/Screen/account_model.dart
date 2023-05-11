@@ -61,7 +61,7 @@ class _MyAccountState extends State<MyAccount> {
                               borderRadius: BorderRadius.circular(10))),
                       onPressed: () {
                         Navigator.pushReplacementNamed(
-                            context, '/suggestions_page');
+                            context, '/suggestions_view');
                       },
                       child: const Text("زائر")),
                 ),

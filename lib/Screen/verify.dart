@@ -54,14 +54,14 @@ class _MyVerifyState extends State<MyVerify> {
                     height: 30,
                   ),
                 ),
-                Pinput(
+                const Pinput(
                   length: 6,
                   // defaultPinTheme: defaultPinTheme,
                   // focusedPinTheme: focusedPinTheme,
                   // submittedPinTheme: submittedPinTheme,
 
                   showCursor: true,
-                  onCompleted: (pin) => print(pin),
+                  onCompleted: print,
                 ),
                 const SizedBox(
                   height: 28,
